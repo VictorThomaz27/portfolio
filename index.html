@@ -9,7 +9,6 @@
         <!-- =====BOX ICONS===== -->
         <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
         <title>Portfolio</title>
     </head>
     <body class="dark-theme">
@@ -74,7 +73,13 @@
                 
                     <div>
                         <h2 class="about__subtitle">Eu sou o Victor</h2>
-                        <p class="about__text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptate cum expedita quo culpa tempora, assumenda, quis fugiat ut voluptates soluta, aut earum nemo recusandae cumque perferendis! Recusandae alias accusamus atque.</p>           
+                        <p class="about__text"> Desenvolvedor Full Stack com experiência em ReactJS, Next.js, PHP e integrações via APIs RESTful, atuando no ciclo completo de 
+                            desenvolvimento de sistemas corporativos.</p><br>
+                        <p>Experiência em front-end moderno com React, criação de APIs e otimização de bancos de dados 
+                            SQL Server. Vivência em integrações de sistemas (ERP/WMS) e desenvolvimento de soluções escaláveis.</p><br>
+                            <p>Conhecimentos em Node.js, React 
+                            Native, Flutter, Docker, versionamento com Git e metodologias ágeis (Scrum/Kanban). Inglês intermediário para leitura e compreensão 
+                            técnica. Perfil analítico, colaborativo e orientado a inovação tecnológica.</p></br>
                     </div>                                   
                 </div>
             </section>
@@ -86,7 +91,7 @@
                 <div class="skills__container bd-grid">          
                     <div>
                         <h2 class="skills__subtitle">Habilidades Profissionais</h2>
-                        <p class="skills__text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit optio id vero amet, alias architecto consectetur error eum eaque sit.</p>
+                        <h2 class="skills__subtitle">front-end</p>
                         
                         <div class="skills__data">
                             <div class="skills__names">
@@ -159,11 +164,13 @@
                 <h2 class="section-title">Contato</h2>
 
                 <div class="contact__container bd-grid">
-                    <form action="" class="contact__form">
-                        <input type="text" placeholder="Name" class="contact__input">
-                        <input type="mail" placeholder="Email" class="contact__input">
-                        <textarea name="" id="" cols="0" rows="10" class="contact__input"></textarea>
-                        <input type="button" value="Enviar" class="contact__button button">
+                    <form id="form" class="contact__form">
+                        <input type="text" name="name" placeholder="Name" class="contact__input" required>
+                        <input type="email" name="email" placeholder="Email" class="contact__input" required>
+                        <textarea name="message" placeholder="Detalhes" cols="0" rows="10" class="contact__input" required></textarea>
+                        <!-- Campo invisível para salvar o horário -->
+                        <input type="hidden" name="time" id="time">
+                        <input type="submit" value="Enviar" class="contact__button button">
                     </form>
                 </div>
             </section>
@@ -186,5 +193,36 @@
 
         <!--===== MAIN JS =====-->
         <script src="assets/js/main.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+  // Inicializar com sua PUBLIC KEY
+  emailjs.init("0z7_o85s0Cl-BvRp1"); 
+
+  const form = document.getElementById("form");
+  const timeInput = document.getElementById("time");
+
+  // Antes de enviar, insere o horário atual no input hidden
+  form.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    // Pega o horário atual (HH:MM)
+    const now = new Date();
+    const horas = String(now.getHours()).padStart(2, "0");
+    const minutos = String(now.getMinutes()).padStart(2, "0");
+    timeInput.value = `${horas}:${minutos}`;
+
+    // Envia com EmailJS
+    emailjs.sendForm("service_jlx5r6j", "template_gw88v3g", this)
+      .then(() => {
+        alert("Mensagem enviada com sucesso!");
+        form.reset();
+      }, (error) => {
+        console.error("Erro:", error);
+        alert("Erro ao enviar mensagem. Veja o console para mais detalhes.");
+      });
+  });
+</script>
+
     </body>
 </html>

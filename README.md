@@ -1,9 +1,17 @@
-# Portfolio Responsive Complete
+# 🌐 Portfólio Pessoal
 
-- Responsive Personal Portfolio Website HTML CSS & JavaScript.
-- Contains animations when scrolling.
-- Smooth scrolling in each section.
-- Developed first with the Mobile First methodology, then for desktop.
-- Compatible with all mobile devices and with a beautiful and pleasant user interface.
+Landing page desenvolvida para apresentar meus projetos e habilidades em desenvolvimento web.
 
+🔗 Acesse aqui: [Meu Portfólio](https://victorthomaz27.github.io/portfolio/)
 
+## 🚀 Tecnologias
+- HTML5
+- CSS3
+- JavaScript
+- Git & GitHub Pages
+
+## 📦 Como executar
+```bash
+git clone https://github.com/VictorThomaz27/portfolio.git
+cd portfolio
+# abra o index.html no navegador
